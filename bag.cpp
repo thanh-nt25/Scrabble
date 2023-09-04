@@ -8,17 +8,14 @@
 
 using namespace std;
 
-//using array
 Bag::Bag():
 	numTiles(100)
 {
-	//random picking of tiles
 	srand(time(nullptr));
 	
 	const char letters[] = {' ','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 	const int  counts[]  = {2,9,2,2,4,12,2,3,2,9,1,1,4,2,6,8,2,1,6,4,6,4,2,2,1,2,1};
 	const int points[]   = {0,1,3,3,2,1,4,2,4,1,8,5,1,3,1,1,3,10,1,1,1,1,4,4,8,4,10};
-	//~ const int points[]   = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
 	
 	
 	int n = 0;
@@ -54,9 +51,9 @@ Tile* Bag::getTile()
 	if(numTiles)
 	{
 		int index = rand()%numTiles;
-		Tile* temp = tiles[index];          // return this
-		tiles[index] = tiles[numTiles - 1]; // move last tile to random index
-		tiles[numTiles - 1] = temp;         // move random tile to last
+		Tile* temp = tiles[index];          
+		tiles[index] = tiles[numTiles - 1]; 
+		tiles[numTiles - 1] = temp;         
 		numTiles--;
 		
 		selfTest();
@@ -75,10 +72,8 @@ void Bag::reset()
 
 void Bag::selfTest() const
 {
-	//cout << "Testing bag   ... ";
 	for(int i=0; i<numTiles; i++)
 		tiles[i]->selfTest();
-	//cout << "passed" << endl;
 }
 
 void Bag::addTile(Tile* t) 
